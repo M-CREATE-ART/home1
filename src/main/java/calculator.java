@@ -7,7 +7,7 @@ public class calculator {
         float  a=in.nextFloat();
         float  b=in.nextFloat();
         float  c=a+b;
-        float  d= a-b;
+        float  d= a+(-b);
         float  e=a*b;
         float  f=a/b;
 
