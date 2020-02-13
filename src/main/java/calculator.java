@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class calculator {
+class array  {
     public static void main(String[] args) {
         System.out.println("get the sum of given two numbers");
         Scanner in = new Scanner(System.in);
