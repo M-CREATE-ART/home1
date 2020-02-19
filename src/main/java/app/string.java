@@ -8,11 +8,13 @@ public class string {
         final String UPPVOW = "AEOIU";
         final String UPPCON="BCDFGHJKLMNPQRSTVXZ";
         final String LOWVOW="aeiou";
-        final String LOWCON="bcdfghjklmnpqrstvwxyz";
-        int range = 'Z'-'a' + 1;
-        int start = 'a';
+        final String LOWCON="bcdfghjklmnpqrstvwxy";
+        int range = 'Z'-'A' + 1;
+        int start = 'A';
         StringBuilder rand_s = new StringBuilder();
         for (int i = 0; i < 60; i++) {
+            int zeroOrOne=(int)(Math.random()*2);
+
             char letter = (char) (Math.random() * range + start);
             rand_s.append(letter);
         }
