@@ -1,42 +1,38 @@
-package HM4Package;
+package HW5Package;
 
 public class Human {
     String species;
     int age;
     String name;
     String surname;
+    Family family;
     int year;
     int iq;
-    Human mother;
-    Human father;
-    Pet pet;
-    public Human() {
+
+    public Human(String s) {
 
     }
 
-    public Human(String name, String surname, int year, int iq, String mother, String father) {
+
+    public Human(String name, String surname, int year, int iq) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
     }
 
-    public Human(String name, String surname, int year, int iq, Human mother, Human father) {
+    public Human(String name, String surname, int year, int iq, Family family ) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
-        this.mother = mother;
-        this.father = father;
+     
     }
 
-    public void GreetPet() {
-        System.out.println(" Hello, " + pet.nickname);
+    public static boolean equals(Human gulshan, Human maryam) {
+
     }
 
-    public void DescribePet() {
-        System.out.println("I have " + species + "He is " + age);
-    }
 
     @Override
     public String toString() {
@@ -45,8 +41,6 @@ public class Human {
                 ", surname='" + surname + '\'' +
                 ", year=" + year +
                 ", iq=" + iq +
-                ", mother=" + mother +
-                ", father=" + father +
                 '}';
     }
 
