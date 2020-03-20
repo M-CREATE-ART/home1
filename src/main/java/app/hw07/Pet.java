@@ -1,22 +1,23 @@
-package HW5Package;
+package app.hw07;
 
 import java.util.Arrays;
 
-public class Pet {
-    private String nickname;
-    private String species;
-    private int age;
-    private int trickLevel;
-    private String[] habits;
+public abstract class Pet {
+    String nickname;
+    String species;
+    int age;
+    int trickLevel;
+    String[] habits;
 
-    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
-        this.species = species;
+    public Pet() {
+    }
+
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
+        this.species = Species.UNKNOWN.name();
         this.age = age;
         this.trickLevel = trickLevel;
         this.habits = habits;
         this.nickname = nickname;
-
-
     }
 
     public String getNickname() {
@@ -63,14 +64,11 @@ public class Pet {
         return String.format("I am eating");
     }
 
-    public String respond() {
-        return String.format("Hello, owner. I am %s. I miss you", nickname);
-    }
+    public abstract String respond();
 
     public String foul() {
         return String.format("I need to cover it up");
     }
-
     @Override
     public String toString() {
         return "Pet{" +
@@ -81,4 +79,6 @@ public class Pet {
                 ", habits=" + Arrays.toString(habits) + '\'' +
                 '}';
     }
+
+
 }

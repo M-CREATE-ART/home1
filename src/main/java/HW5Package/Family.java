@@ -1,13 +1,13 @@
 package HW5Package;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Family {
     private Human father;
     private Human mother;
     private Human children[];
     private Pet pet;
-    String family;
     int idx = 0;
 
     public Family(Human father, Human mother, Human[] children) {
@@ -36,10 +36,36 @@ public class Family {
         return true;
     }
 
-    public void countFamily(int count) {
-        count = 2 + idx;
+    boolean deleteChild(Human child) {
+
+        int index = children.length;
+
+        for (int i = 0; i < children.length; i++) {
+            if (children[i] == child) index = i;
+        }
+
+        try{
+            if (children[index] != null){
+
+                for (int i = index; i < children.length-1; i++) {
+                    children[i] = children[i+1];
+                }
+                idx--;
+                children= Arrays.copyOf(children, idx);
+                return true;
+            }
+
+        }
+
+        catch(Exception e) {
+            System.out.println("Oops, you don't have such a child. try again!");
+        }
+        return false;
     }
 
+    public int countFamily () {
+            return 2 + idx;
+        }
 
     public Human getFather() {
         return father;
@@ -74,12 +100,13 @@ public class Family {
     }
 
 
-    public void GreetPet() {
-        System.out.println(" Hello, " + pet.getNickname());
+    public String greetPet() {
+        return String.format(" Hello, %s", pet.getNickname());
     }
 
-    public void DescribePet() {
-        System.out.println("I have " + getPet().getSpecies() + "He is " + getPet().getAge());
+    public String describePet() {
+        String trick = pet.getTrickLevel() >= 50 ? "very sly.\n" : "almost not sly.\n";
+        return String.format("I have a %s, he is %d years old, he is %s", pet.getSpecies(), pet.getAge(), trick);
     }
 
     @Override
@@ -87,4 +114,20 @@ public class Family {
         return String.format("Family[father=%s, mother=%s, children=%s, pet=%s]", father, mother, Arrays.toString(children), pet);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Family family = (Family) o;
+        return  mother.equals(family.mother) &&
+                father.equals(family.father) &&
+                Arrays.equals(children, family.children);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(mother, father);
+        result = 31 * result + Arrays.hashCode(children);
+        return result;
+    }
 }

@@ -1,4 +1,4 @@
-package StepProject;
+package DOAPack;
 
 public class DAO {
 }

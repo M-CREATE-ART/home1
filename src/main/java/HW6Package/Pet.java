@@ -1,13 +1,15 @@
 package HW6Package;
 
+import java.util.Arrays;
+
 public class Pet {
     String nickname;
-    String species;
+    Species species;
     int age;
     int trickLevel;
     String[] habits;
 
-    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
         this.species = species;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -16,9 +18,7 @@ public class Pet {
 
 
     }
-    enum Species{
-        CAT, DOG;
-    }
+
 
     @Override
     protected void finalize() throws Throwable {
@@ -33,11 +33,11 @@ public class Pet {
         this.nickname = nickname;
     }
 
-    public String getSpecies() {
+    public Species getSpecies() {
         return species;
     }
 
-    public void setSpecies(String species) {
+    public void setSpecies(Species species) {
         this.species = species;
     }
 
@@ -65,27 +65,26 @@ public class Pet {
         this.habits = habits;
     }
 
-    public void PetEat() {
-        System.out.println("I am eating");
-
+    public String eat() {
+        return String.format("I am eating");
     }
 
-    public void PetRespond() {
-        System.out.println("Hello, owner. I am " + nickname + " I miss you ");
+    public String respond() {
+        return String.format("Hello, owner. I am %s. I miss you", nickname);
     }
 
-    public void PetFoul() {
-        System.out.println("I need to cover it up");
+    public String foul() {
+        return String.format("I need to cover it up");
     }
 
     @Override
     public String toString() {
-        return "Pet{" +
+        return "Pet[" +
                 "species=" + species + '\'' +
                 ", nickname=" + nickname + '\'' +
                 ", age=" + age +
                 ", trickLevel=" + trickLevel +
-                ", habits=" + habits + '\'' +
-                '}';
+                ", habits=" + Arrays.toString(habits) + '\'' +
+                ']';
     }
 }

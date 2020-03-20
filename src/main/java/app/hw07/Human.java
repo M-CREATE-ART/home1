@@ -1,4 +1,4 @@
-package HW6Package;
+package app.hw07;
 
 public class Human {
     String name;
@@ -6,7 +6,6 @@ public class Human {
     Family family;
     int year;
     int iq;
-
 
     public Human() {
 
@@ -26,8 +25,6 @@ public class Human {
         this.iq = iq;
      
     }
-
-
     public String greetPet() {
         return String.format(" Hello, %s", family.getPet().getNickname());
     }
@@ -39,18 +36,8 @@ public class Human {
 
 
     @Override
-       public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
-                ", iq=" + iq +
-                '}';
-    }
-
-    @Override
-    protected void finalize() throws Throwable {
-        System.out.println("Human class is going to be removed");
+    public String toString() {
+        return String.format("Human[name='%s', surname='%s', year=%d, iq=%d]", name, surname, year, iq);
     }
 
 }

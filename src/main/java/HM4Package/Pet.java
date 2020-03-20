@@ -1,13 +1,23 @@
 package HM4Package;
 
+import java.util.Arrays;
+
 public class Pet {
     String nickname;
     String species;
     int age;
     int trickLevel;
-    String habits;
+    String[] habits;
 
-    public Pet(String species, String nickname, int age, int trickLevel, String habits) {
+    public Pet() {
+    }
+
+    public Pet(String nickname, String species) {
+        this.nickname = nickname;
+        this.species = species;
+    }
+
+    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
         this.species = species;
         this.age = age;
         this.trickLevel = trickLevel;
@@ -17,27 +27,20 @@ public class Pet {
 
     }
 
-    public void PetEat() {
-        System.out.println("I am eating");
-
+    public String eat() {
+       return String.format("I am eating");
     }
 
-    public void PetRespond() {
-        System.out.println("Hello, owner. I am " + nickname + " I miss you ");
+    public String respond() {
+        return String.format("Hello, owner. I am %s. I miss you", nickname);
     }
 
-    public void PetFoul() {
-        System.out.println("I need to cover it up");
+    public String foul() {
+        return String.format("I need to cover it up");
     }
 
     @Override
     public String toString() {
-        return "Pet{" +
-                "species=" + species + '\'' +
-                ", nickname=" + nickname + '\'' +
-                ", age=" + age +
-                ", trickLevel=" + trickLevel +
-                ", habits=" + habits + '\'' +
-                '}';
+        return String.format("%s[ nickname=%s', age=%d, trickLevel=%d, habits=%s']", species, nickname, age, trickLevel, Arrays.toString(habits));
     }
 }
